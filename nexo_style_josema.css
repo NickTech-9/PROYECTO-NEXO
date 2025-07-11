@@ -1,0 +1,321 @@
+ /* ===============================================
+           VARIABLES CSS - Gestión de colores por tema
+           =============================================== */
+        
+        /* TEMA OSCURO - Se activa automáticamente si el usuario prefiere modo oscuro */
+        @media(prefers-color-scheme: dark) {
+            :root{
+                /* Colores de fondo - Se usan en nav, header, etc. */
+                --bg-text-color: #172a21;        /* Fondo de navegación y menús */
+                --background-color: #5d8883;     /* Fondo principal del body */
+                --background-color-all: #1a1a1a; /* Fondo general alternativo */
+                --background-color-label: #007bff; /* Fondo para etiquetas */
+                --background-transparent: transparent; /* Fondo transparente */
+                
+                /* Colores de texto - Visibles en todo el contenido */
+                --text-color-hover: #9fccc6;     /* Color de texto al hacer hover */
+                --text-color: #dbf2ef;           /* Color de texto del header */
+                --text-color-primary: #ffffff;   /* Color de texto principal (blanco) */
+                --text-color-secondary: #444;    /* Color de texto secundario (gris) */
+                --text-color-label: rgba(204, 204, 204, 0.7); /* Color de labels */
+                --icon-color: #ffffff;           /* Color de iconos */
+                
+                /* Colores de navegación - Visibles en menús */
+                --nav-color-hover: #334f48;      /* Color de fondo al hacer hover en nav */
+                
+                /* Colores de bordes - Visibles en inputs y divisores */
+                --border-color: #323232;         /* Color de borde principal */
+                --border-color-secondary: #323232; /* Color de borde secundario */
+                
+                /* Colores de resaltado - Visibles en elementos activos */
+                --highlight-color: #007bff;      /* Color de resaltado (azul) */
+            }
+        }
+
+        /* TEMA CLARO - Se activa automáticamente si el usuario prefiere modo claro */
+        @media(prefers-color-scheme: light) {
+            :root{
+                /* Colores de fondo - Versión clara */
+                --bg-text-color: #138;           /* Fondo de navegación (azul oscuro) */
+                --background-color: #f8f9fa;     /* Fondo principal claro */
+                --background-color-all: #f8f9fa; /* Fondo general claro */
+                --background-color-label: #007bff; /* Fondo para etiquetas */
+                --background-transparent: transparent; /* Fondo transparente */
+                
+                /* Colores de texto - Versión clara */
+                --text-color-hover: #fff;        /* Texto blanco al hacer hover */
+                --text-color: #eee;              /* Texto claro para header */
+                --text-color-primary: #ffffff;   /* Texto principal blanco */
+                --text-color-secondary: #444;    /* Texto secundario gris */
+                --text-color-label: rgba(204, 204, 204, 0.7); /* Color de labels */
+                --icon-color: #444;              /* Color de iconos */
+                
+                /* Colores de navegación - Versión clara */
+                --nav-color-hover: #166cd8;      /* Hover azul más claro */
+                
+                /* Colores de bordes - Versión clara */
+                --border-color: #323232;         /* Borde principal */
+                --border-color-secondary: #ddd;  /* Borde secundario claro */
+                
+                /* Colores de resaltado - Versión clara */
+                --highlight-color: #007bff;      /* Resaltado azul */
+            }
+        }
+
+        /* ===============================================
+           ESTILOS GENERALES - Base de todo el sitio
+           =============================================== */
+        
+        /* Reset básico - Elimina márgenes y padding por defecto */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+        }
+
+        /* Cuerpo principal - Fondo y fuente base visible en toda la página */
+        body {
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ===============================================
+           HEADER PRINCIPAL - Barra superior con logo
+           Visible: Parte superior de la página
+           =============================================== */
+        header {
+            padding: 12px 30px;                    /* Espacio interno del header */
+            font-size: 1.8em;                      /* Tamaño grande para el logo */
+            color: var(--text-color-secondary);    /* Color del texto del logo */
+            font-weight: bold;                     /* Logo en negrita */
+            background-color: var(--text-color);   /* Fondo del header */
+            display: flex;                         /* Layout flexbox */
+            justify-content: space-between;        /* Logo a la izquierda, menú a la derecha */
+            align-items: center;                   /* Centrado vertical */
+            position: relative;                    /* Para posicionar elementos hijos */
+        }
+
+        /* Lado izquierdo del header - Contiene el logo "NEXO" */
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Lado derecho del header - Contiene buscador y menús */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;      /* Espacio entre buscador y menús */
+        }
+
+        .icon-menu {
+            display: block;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23444" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+        /* ===============================================
+           BARRA DE BÚSQUEDA - Input con animación
+           Visible: Lado derecho del header
+           =============================================== */
+        
+        /* Contenedor del buscador - Posición relativa para elementos flotantes */
+        .search-container {
+            position: relative;
+            width: 250px;   /* Ancho fijo en desktop */
+        }
+
+        /* Campo de entrada del buscador - Input principal */
+        .search-input {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;                                    /* Sin borde superior/lateral */
+            border-bottom: 2px solid var(--border-color);   /* Solo borde inferior */
+            outline: none;                                   /* Sin outline al hacer focus */
+            background-color: var(--background-transparent); /* Fondo transparente */
+            color: var(--text-color-secondary);             /* Color del texto */
+        }
+
+        /* Label flotante - Texto que se mueve cuando se hace focus */
+        .search-label {
+            position: absolute;
+            top: 8px;                           /* Posición inicial dentro del input */
+            left: 12px;
+            font-size: 14px;
+            color: var(--text-color-label);     /* Color gris transparente */
+            pointer-events: none;               /* No interfiere con clics */
+            transition: all 0.3s ease;         /* Animación suave */
+        }
+
+        /* Línea de resaltado - Aparece al hacer focus en el input */
+        .input-highlight {
+            position: absolute;
+            bottom: 0;                          /* Pegada al borde inferior */
+            left: 0;
+            height: 2px;
+            width: 0;                           /* Comienza sin ancho */
+            background-color: var(--highlight-color); /* Color azul */
+            transition: all 0.3s ease;         /* Animación suave */
+        }
+
+        /* Animación del label - Se activa al hacer focus o escribir */
+        .search-input:focus + .search-label,
+        .search-input:not(:placeholder-shown) + .search-label {
+            top: -18px;                         /* Se mueve hacia arriba */
+            font-size: 12px;                    /* Se hace más pequeño */
+            color: var(--highlight-color);      /* Cambia a color azul */
+        }
+
+        /* Animación de la línea - Se expande al hacer focus */
+        .search-input:focus + .search-label + .input-highlight {
+            width: 100%;                        /* Se expande a todo el ancho */
+        }
+
+        /* ===============================================
+           NAVEGACIÓN - Breakpoints responsive
+           =============================================== */
+
+        /* Desktop - Pantallas grandes */
+        @media (min-width: 1024px) {
+            .mobile, .tablet {
+                display: none;
+            }
+
+            .desktop {
+                display: block;
+                
+                & ul {
+                    list-style-type: none;
+                    display: flex;
+                    gap: 0px;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                & a {
+                    color: var(--text-color-secondary);
+                    background-color: transparent;
+                    text-decoration: none;
+                    padding: 8px 16px;
+                    display: block;
+                    text-align: center;
+                    cursor: pointer;
+                    font-size: 0.8em;
+                    font-weight: normal;
+                    border-radius: 4px;
+                    transition: all 0.3s ease;
+                    
+                    &:hover {
+                        background-color: var(--nav-color-hover);
+                        color: var(--text-color-primary);
+                    }
+                }
+            }
+
+            .search-container {
+                width: 250px;
+            }
+        }
+
+        /* Mobile - Pantallas pequeñas */
+        @media (max-width: 1023px) {
+            .desktop {
+                display: none;
+            }
+
+            .mobile {
+                display: block;
+                position: relative;
+                
+                & ul {
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    background-color: var(--bg-text-color);
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    min-width: 160px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-radius: 4px;
+                    overflow: hidden;
+                    transform: scaleY(0);
+                    transform-origin: top;
+                    transition: transform 0.3s ease;
+                }
+
+                &:hover {
+                    & ul {
+                        transform: scaleY(1);
+                    }
+                }
+
+                & a {
+                    color: var(--text-color-primary);
+                    background-color: var(--bg-text-color);
+                    text-decoration: none;
+                    width: 100%;
+                    padding: 12px 20px;
+                    display: block;
+                    text-align: left;
+                    cursor: pointer;
+                    font-size: 0.7em;
+                    font-weight: normal;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: var(--nav-color-hover);
+                        color: var(--text-color-hover);
+                    }
+                }
+
+                & li:last-child a {
+                    border-bottom: none;
+                }
+            }
+
+            .search-container {
+                width: 180px;
+            }
+
+             .search-label {
+                top: 6px;
+                font-size: 13px;
+            }
+
+            .search-input:focus + .search-label,
+            .search-input:not(:placeholder-shown) + .search-label {
+                top: -12px;
+                font-size: 11px;
+            }
+
+            i.icon-menu {
+                content: "";
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+                filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23444" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            header {
+                padding: 10px 15px;
+                font-size: 1.5em;
+            }
+
+            .header-right {
+                gap: 15px;
+            }
+        }
