@@ -1,4 +1,3 @@
-
 #PROJECT NEXO
 
 El proyecto nexo es un trabajo en equipo desarrollado por el equipo cooperativo perteneciente al club de discord "DevLoopers Front-end".
@@ -21,3 +20,59 @@ Sin mucho más que añadir, seais bienvenido a Nexo!
 [Documentation JS](https://developer.mozilla.org/es/docs/Web/JavaScript)
 
 [Curso de HTML y CSS bien explicado](https://www.youtube.com/watch?v=ELSm-G201Ls)
+
+
+// esto se puede arreglar para que se entienda mejor 
+project/
+
+│
+
+├── index.html # Página principal
+
+├── about.html # Otra página (ej: "Sobre nosotros")
+
+├── contact.html # Otra página (ej: "Contacto")
+
+│
+
+├── /assets
+
+│ ├── /img
+
+│ ├── /fonts
+
+│ └── /icons
+
+│
+
+├── /css
+
+│ ├── reset.css
+
+│ ├── styles.css # Común a todas las páginas
+
+│ └── pages/
+
+│ ├── about.css # Estilos específicos
+
+│ └── contact.css
+
+│
+
+├── /js
+
+│ ├── main.js # Código común
+
+│ └── pages/
+
+│ ├── about.js # Código específico de cada página
+
+│ └── contact.js
+
+│
+
+└── README.md
+
+
+
+en realidad el pr va a pisar todo a si que no hace falta hacer otro repo 
